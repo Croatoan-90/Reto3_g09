@@ -7,7 +7,9 @@ import com.g09.reto3.repository.SkatesRepository;
 import com.g09.reto3.service.SkatesService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SkatesServiceImpl implements SkatesService{
 
     @Autowired

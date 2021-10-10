@@ -1,0 +1,38 @@
+package com.g09.reto3.controller;
+
+import java.util.List;
+
+import com.g09.reto3.entity.Clients;
+import com.g09.reto3.service.ClientsService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@CrossOrigin(origins="*")
+@RestController
+@EnableAutoConfiguration
+@RequestMapping("/api/Client")
+public class ClientsController {
+    
+    @Autowired
+    ClientsService clientsService;
+
+    @GetMapping("/all")
+    public List<Clients> findAllClients(){
+        return clientsService.findAllClients();
+    }
+
+    @PostMapping("/save")
+    public Clients create(@RequestBody Clients client){
+        return clientsService.save(client);
+    }
+
+
+    
+}

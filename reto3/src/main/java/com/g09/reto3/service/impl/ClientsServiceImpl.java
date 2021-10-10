@@ -7,8 +7,10 @@ import com.g09.reto3.repository.ClientsRepository;
 import com.g09.reto3.service.ClientsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class ClientsServiceImpl implements ClientsService {
 
     @Autowired

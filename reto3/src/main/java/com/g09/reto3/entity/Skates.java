@@ -1,10 +1,14 @@
 package com.g09.reto3.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import com.sun.istack.NotNull;
 
@@ -14,6 +18,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name="skates")
@@ -25,27 +30,33 @@ public class Skates implements Serializable{
 
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq")
-    @Column(name="skate_id")
+    @Column(name="id")
     private long id;
+
+    @Column(name="name")
+    @NotNull
+    private String name;
 
     @Column(name="brand")
     @NotNull
     private String brand;
 
-    @Column(name="model")
+    @Column(name="year")
     @NotNull
-    private int model;
+    private int year;
 
-    @Column(name="category_id")
+    @Column(name="description")
     @NotNull
-    private int category_id;
+    private String description;
 
-    @Column(name="skate_name")
-    @NotNull
-    private String skate_name;
+    @ManyToOne
+    @JoinColumn(name="category_id")
+    private Category category;
+        
 
-
-
+    @Column(name="messages")
+    @OneToMany( cascade = CascadeType.ALL)
+    private List<Message> messages;
 
     
 }

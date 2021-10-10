@@ -7,7 +7,9 @@ import com.g09.reto3.repository.CategoryRepository;
 import com.g09.reto3.service.CategoryService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CategoryServiceImpl implements CategoryService{
 
     @Autowired
