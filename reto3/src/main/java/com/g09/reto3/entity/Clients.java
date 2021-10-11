@@ -28,7 +28,7 @@ import java.io.Serializable;
 public class Clients implements Serializable{
 
 @Id
-@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq")
+@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq2")
 @Column(name="client_id")
 private Long idClient;
 

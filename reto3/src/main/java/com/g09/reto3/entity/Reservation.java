@@ -23,7 +23,7 @@ import lombok.Setter;
 public class Reservation {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq4")
     @Column(name="id")
     private Long idReservation;
 

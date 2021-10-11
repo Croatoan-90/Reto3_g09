@@ -27,7 +27,7 @@ import java.io.Serializable;
 public class Skates implements Serializable{
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq5")
     @Column(name="id")
     private Long id;
 

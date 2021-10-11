@@ -26,7 +26,7 @@ import java.io.Serializable;
 public class Message implements Serializable{
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq3")
     @Column(name="id")
     private Long idMessage;
 
