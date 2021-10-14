@@ -1,4 +1,7 @@
 package com.g09.reto3.entity;
+
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,42 +12,46 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sun.istack.NotNull;
-
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
-
 @Entity
-@Table(name="message")
+@Table(name="reservation")
 @Getter
 @Setter
 @NoArgsConstructor
-
-
-public class Message implements Serializable{
+public class Reservation {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq3")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq4")
     @Column(name="id")
-    private Long idMessage;
+    private Long idReservation;
 
-    @Column(name="messageText", length=250)
-    @NotNull
-    private String messageText;
+    @Column(name="startDate")
+    private Date startDate;
+
+    @Column(name="devolutionDate")
+    private Date devolutionDate;
+
+    @Column(name="status", length=250)
+    private String status;
 
     @ManyToOne
     @JoinColumn(name="skate")
-    @JsonIgnoreProperties(value={"reservations","messages"})
+    @JsonIgnoreProperties(value={"reservations"})
     private Skates skate;
-    
+
     @ManyToOne
     @JoinColumn(name="client")
-    @JsonIgnoreProperties(value={"reservations","messages"})
+    @JsonIgnoreProperties(value={"messages","reservations"})
     private Clients client;
+
+    @Column(name="score")
+    private String score;
+
+  
 
     
 }
