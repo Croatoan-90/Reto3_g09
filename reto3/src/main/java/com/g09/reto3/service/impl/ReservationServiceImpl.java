@@ -21,6 +21,11 @@ public class ReservationServiceImpl implements ReservationService{
         return (List<Reservation>) reservationRepository.findAll();
     }
 
+    @Override
+    public Optional<Reservation> findOne(Long id){
+        return reservationRepository.findById(id);
+    }
+
     public Optional<Reservation> getReservation(long id){
         return reservationRepository.findById(id);
     }
@@ -38,6 +43,14 @@ public class ReservationServiceImpl implements ReservationService{
             }else{
                 return reservation;
             }
+        }
+    }
+
+    @Override
+    public void delete(Long id){
+        Optional<Reservation> reservation= findOne(id);
+        if(reservation.isPresent()){
+            reservationRepository.delete(reservation.get());
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.g09.reto3.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.g09.reto3.entity.Clients;
 import com.g09.reto3.repository.ClientsRepository;
@@ -22,13 +23,24 @@ public class ClientsServiceImpl implements ClientsService {
     }
 
     @Override
+    public Optional<Clients> findOne(Long id){
+        return clientsRepository.findById(id);
+    }
+
+    @Override
     @Transactional
     public Clients save(Clients client) {
         
         return clientsRepository.save(client);
     }
 
-  
+    @Override
+    public void delete(Long id){
+        Optional<Clients> client= findOne(id);
+        if(client.isPresent()){
+            clientsRepository.delete(client.get());
+        }
+    }
 
     
 

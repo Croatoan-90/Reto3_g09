@@ -1,6 +1,7 @@
 package com.g09.reto3.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.g09.reto3.entity.Message;
 import com.g09.reto3.repository.MessageRepository;
@@ -21,8 +22,20 @@ public class MessageServiceImpl implements MessageService{
     }
 
     @Override
+    public Optional<Message> findOne(Long id){
+        return messageRepository.findById(id);
+    }
+
+    @Override
     public Message save(Message message) {
         return messageRepository.save(message);
     }
     
+    @Override
+    public void delete(Long id){
+        Optional<Message> message= findOne(id);
+        if(message.isPresent()){
+            messageRepository.delete(message.get());
+        }
+    }
 }
