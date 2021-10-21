@@ -53,4 +53,38 @@ public class ReservationServiceImpl implements ReservationService{
             reservationRepository.delete(reservation.get());
         }
     }
+
+    @Override
+    public Reservation update(Reservation reservation){
+        if(reservation.getIdReservation()!=null){
+        Optional<Reservation> rsv= reservationRepository.findById(reservation.getIdReservation());
+
+            if(!rsv.isEmpty()){
+
+                if(reservation.getStartDate()!=null){
+                    rsv.get().setStartDate(reservation.getStartDate());
+                }
+
+                if(reservation.getDevolutionDate()!=null){
+                    rsv.get().setDevolutionDate(reservation.getDevolutionDate());
+                }
+
+                if(reservation.getStatus()!=null){
+                    rsv.get().setStatus(reservation.getStatus());
+                }
+
+                if(reservation.getScore()!=null){
+                    rsv.get().setScore(reservation.getScore());
+                }
+
+                reservationRepository.save(rsv.get());
+                return rsv.get();
+                
+            } else{
+                return reservation;
+            }
+        }else{
+            return reservation;
+        }
+     }
 }

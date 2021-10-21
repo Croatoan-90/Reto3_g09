@@ -14,5 +14,7 @@ public interface ClientsService {
     Clients save(Clients client);
 
     void delete(Long id);
+
+    Clients update(Clients client);
     
 }

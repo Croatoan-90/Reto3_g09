@@ -38,4 +38,26 @@ public class MessageServiceImpl implements MessageService{
             messageRepository.delete(message.get());
         }
     }
+
+    @Override
+    public Message update(Message message){
+        if(message.getIdMessage()!=null){
+        Optional<Message> msn= messageRepository.findById(message.getIdMessage());
+
+            if(!msn.isEmpty()){
+
+                if(message.getMessageText()!=null){
+                    msn.get().setMessageText(message.getMessageText());
+                }
+               
+                messageRepository.save(msn.get());
+                return msn.get();
+                
+            } else{
+                return message;
+            }
+        }else{
+            return message;
+        }
+     }
 }

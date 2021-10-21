@@ -42,7 +42,39 @@ public class ClientsServiceImpl implements ClientsService {
         }
     }
 
-    
+    @Override
+    public Clients update(Clients client){
+        if(client.getIdClient()!=null){
+        Optional<Clients> cln= clientsRepository.findById(client.getIdClient());
+
+            if(!cln.isEmpty()){
+
+                if(client.getAge()!=0 && client.getAge()>0){
+                    cln.get().setAge(client.getAge());
+                }
+
+                if(client.getEmail()!=null){
+                    cln.get().setEmail(client.getEmail());
+                }
+
+                if(client.getName()!=null){
+                    cln.get().setName(client.getName());
+                }
+
+                if(client.getPassword()!=null){
+                    cln.get().setPassword(client.getPassword());
+                }
+               
+                clientsRepository.save(cln.get());
+                return cln.get();
+                
+            } else{
+                return client;
+            }
+        }else{
+            return client;
+        }
+     }
 
 
     

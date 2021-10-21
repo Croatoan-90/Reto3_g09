@@ -39,5 +39,39 @@ public class SkatesServiceImpl implements SkatesService{
             skatesRepository.delete(skate.get());
         }
     }
+
+    @Override
+    public Skates update(Skates skate){
+        if(skate.getId()!=null){
+        Optional<Skates> skt= skatesRepository.findById(skate.getId());
+
+            if(!skt.isEmpty()){
+
+                if(skate.getName()!=null){
+                    skt.get().setName(skate.getName());
+                }
+
+                if(skate.getBrand()!=null){
+                    skt.get().setBrand(skate.getBrand());
+                }
+
+                if(skate.getYear()!=0){
+                    skt.get().setYear(skate.getYear());
+                }
+
+                if(skate.getDescription()!=null){
+                    skt.get().setDescription(skate.getDescription());
+                }
+
+                skatesRepository.save(skt.get());
+                return skt.get();
+                
+            } else{
+                return skate;
+            }
+        }else{
+            return skate;
+        }
+     }
     
 }

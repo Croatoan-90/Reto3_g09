@@ -39,6 +39,33 @@ public class CategoryServiceImpl implements CategoryService{
         }
     }
 
+    @Override
+    public Category update(Category category){
+        if(category.getId()!=null){
+        Optional<Category> cat= categoryRepository.findById(category.getId());
 
-    
+            if(!cat.isEmpty()){
+                if(category.getDescription()!=null){
+                  cat.get().setDescription(category.getDescription());
+                } 
+                
+                if( category.getName()!=null){
+                  cat.get().setName(category.getName());
+                }
+
+                if(category.getSkates()!=null){
+                  cat.get().setSkates(category.getSkates());
+                }
+
+                categoryRepository.save(cat.get());
+                return cat.get();
+                
+            } else{
+                return category;
+            }
+        }else{
+            return category;
+        }
+     }
+     
 }

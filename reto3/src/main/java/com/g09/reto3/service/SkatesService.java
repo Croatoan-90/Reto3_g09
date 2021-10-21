@@ -14,5 +14,7 @@ public interface SkatesService {
     Skates save(Skates skate);
 
     void delete(Long id);
+
+    Skates update(Skates skate);
     
 }
