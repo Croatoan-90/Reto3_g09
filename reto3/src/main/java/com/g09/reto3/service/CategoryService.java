@@ -13,7 +13,7 @@ public interface CategoryService {
 
     Category save(Category category);
 
-    void delete(Long id);
+    boolean delete(Long id);
 
     Category update(Category category);
     

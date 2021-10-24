@@ -13,7 +13,7 @@ public interface MessageService {
 
     Message save(Message message);
 
-    void delete(Long id);
+   boolean delete(Long id);
 
     Message update(Message message);
     

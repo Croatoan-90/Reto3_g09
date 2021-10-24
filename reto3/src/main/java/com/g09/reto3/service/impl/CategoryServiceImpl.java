@@ -32,12 +32,20 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
-    public void delete(Long id){
+    public boolean delete(Long id){
+        Optional<Category> category=findOne(id);
+            if(!category.isEmpty()){
+                categoryRepository.delete(category.get());
+                return true;        
+            }
+            return false;
+        }
+   /* public void delete(Long id){
         Optional<Category> category= findOne(id);
         if(category.isPresent()){
             categoryRepository.delete(category.get());
         }
-    }
+    }*/
 
     @Override
     public Category update(Category category){

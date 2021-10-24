@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+//import org.springframework.http.ResponseEntity;
 
 @CrossOrigin(origins="*")
 @RestController
@@ -41,12 +41,17 @@ public class ReservationController {
         return reservationService.save(reservation);
     }
 
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id")Long id){
+        return reservationService.delete(id);
+    }
+    /*@ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id){
         reservationService.delete(id);
         return ResponseEntity.ok().build();
-    }
+    }*/
     
     @ResponseStatus(HttpStatus.CREATED)
     @PutMapping("/update")

@@ -13,7 +13,7 @@ public interface ReservationService {
 
     Reservation save(Reservation reservation);
     
-    void delete(Long id);
+   boolean delete(Long id);
 
     Reservation update(Reservation reservation);
     

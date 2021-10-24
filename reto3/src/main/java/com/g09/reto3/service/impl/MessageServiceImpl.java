@@ -32,12 +32,20 @@ public class MessageServiceImpl implements MessageService{
     }
     
     @Override
-    public void delete(Long id){
+    public boolean delete(Long id){
+        Optional<Message> message=findOne(id);
+            if(!message.isEmpty()){
+                messageRepository.delete(message.get());
+                return true;        
+            }
+            return false;
+        }
+    /*public void delete(Long id){
         Optional<Message> message= findOne(id);
         if(message.isPresent()){
             messageRepository.delete(message.get());
         }
-    }
+    }*/
 
     @Override
     public Message update(Message message){

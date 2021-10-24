@@ -35,12 +35,20 @@ public class ClientsServiceImpl implements ClientsService {
     }
 
     @Override
-    public void delete(Long id){
+    public boolean delete(Long id){
+        Optional<Clients> client=findOne(id);
+            if(!client.isEmpty()){
+                clientsRepository.delete(client.get());
+                return true;        
+            }
+            return false;
+        }
+    /*public void delete(Long id){
         Optional<Clients> client= findOne(id);
         if(client.isPresent()){
             clientsRepository.delete(client.get());
         }
-    }
+    }*/
 
     @Override
     public Clients update(Clients client){

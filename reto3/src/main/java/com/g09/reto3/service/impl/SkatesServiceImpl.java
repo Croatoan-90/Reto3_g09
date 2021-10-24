@@ -33,12 +33,21 @@ public class SkatesServiceImpl implements SkatesService{
     }
 
     @Override
-    public void delete(Long id){
+       
+        public boolean delete(Long id){
+        Optional<Skates> skate=findOne(id);
+        if(!skate.isEmpty()){
+            skatesRepository.delete(skate.get());
+            return true;        
+        }
+        return false;
+        }
+    /*public void delete(Long id){
         Optional<Skates> skate= findOne(id);
         if(skate.isPresent()){
             skatesRepository.delete(skate.get());
         }
-    }
+    }*/
 
     @Override
     public Skates update(Skates skate){

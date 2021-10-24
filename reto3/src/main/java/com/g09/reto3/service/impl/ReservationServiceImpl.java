@@ -47,12 +47,20 @@ public class ReservationServiceImpl implements ReservationService{
     }
 
     @Override
-    public void delete(Long id){
+    public boolean delete(Long id){
+        Optional<Reservation> reservation=findOne(id);
+            if(!reservation.isEmpty()){
+                reservationRepository.delete(reservation.get());
+                return true;        
+            }
+            return false;
+        }
+    /*public void delete(Long id){
         Optional<Reservation> reservation= findOne(id);
         if(reservation.isPresent()){
             reservationRepository.delete(reservation.get());
         }
-    }
+    }*/
 
     @Override
     public Reservation update(Reservation reservation){

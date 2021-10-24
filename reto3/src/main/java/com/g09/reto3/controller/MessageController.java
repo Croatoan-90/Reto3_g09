@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 
 @CrossOrigin(origins="*")
 @RestController
@@ -41,11 +41,10 @@ public class MessageController {
         return messageService.save(message);
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") Long id){
-       messageService.delete(id);
-        return ResponseEntity.ok().build();
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id")Long id){
+        return messageService.delete(id);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
