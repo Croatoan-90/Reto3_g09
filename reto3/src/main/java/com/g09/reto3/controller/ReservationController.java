@@ -41,7 +41,7 @@ public class ReservationController {
         return reservationService.save(reservation);
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id){
         reservationService.delete(id);

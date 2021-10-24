@@ -40,7 +40,7 @@ public class ClientsController {
         return clientsService.save(client);
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id){
         clientsService.delete(id);

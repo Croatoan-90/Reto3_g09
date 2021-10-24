@@ -41,7 +41,7 @@ public class MessageController {
         return messageService.save(message);
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id){
        messageService.delete(id);

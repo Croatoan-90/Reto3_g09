@@ -39,7 +39,7 @@ public class CategoryController {
         return categoryService.save(category);
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id){
         categoryService.delete(id);

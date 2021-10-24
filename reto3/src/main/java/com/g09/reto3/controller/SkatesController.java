@@ -39,7 +39,7 @@ public class SkatesController {
         return skatesService.save(skate);
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id){
         skatesService.delete(id);
