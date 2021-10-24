@@ -40,12 +40,14 @@ public class ClientsController {
         return clientsService.save(client);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id){
         clientsService.delete(id);
         return ResponseEntity.ok().build();
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PutMapping("/update")
     public Clients update(@RequestBody Clients client){
         return clientsService.update(client);

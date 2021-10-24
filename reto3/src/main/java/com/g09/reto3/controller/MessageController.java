@@ -41,12 +41,14 @@ public class MessageController {
         return messageService.save(message);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id){
        messageService.delete(id);
         return ResponseEntity.ok().build();
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PutMapping("/update")
     public Message update(@RequestBody Message message){
         return messageService.update(message);

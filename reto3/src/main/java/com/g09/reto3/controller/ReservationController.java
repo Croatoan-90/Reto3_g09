@@ -41,12 +41,14 @@ public class ReservationController {
         return reservationService.save(reservation);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id){
         reservationService.delete(id);
         return ResponseEntity.ok().build();
     }
     
+    @ResponseStatus(HttpStatus.CREATED)
     @PutMapping("/update")
     public Reservation update(@RequestBody Reservation reservation){
         return reservationService.update(reservation);
