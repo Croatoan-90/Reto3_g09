@@ -3,6 +3,7 @@ package com.g09.reto3.service;
 import java.util.List;
 import java.util.Optional;
 
+
 import com.g09.reto3.entity.Reservation;
 
 public interface ReservationService {
@@ -13,8 +14,10 @@ public interface ReservationService {
 
     Reservation save(Reservation reservation);
     
-   boolean delete(Long id);
+    boolean delete(Long id);
 
     Reservation update(Reservation reservation);
+
     
 }
+ 

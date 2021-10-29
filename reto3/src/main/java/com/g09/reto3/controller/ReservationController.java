@@ -2,8 +2,12 @@ package com.g09.reto3.controller;
 
 import java.util.List;
 
+
 import com.g09.reto3.entity.Reservation;
+import com.g09.reto3.entity.custom.CountClients;
+import com.g09.reto3.entity.custom.StatusAmount;
 import com.g09.reto3.service.ReservationService;
+import com.g09.reto3.service.impl.ReservationServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -18,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
-//import org.springframework.http.ResponseEntity;
+
 
 @CrossOrigin(origins="*")
 @RestController
@@ -27,13 +31,32 @@ import org.springframework.http.HttpStatus;
 public class ReservationController {
 
     @Autowired
-    
     ReservationService reservationService;
+
+    @Autowired
+    ReservationServiceImpl reservationServiceImpl;
 
     @GetMapping("/all")
     public List<Reservation> findAllReservations(){
         return reservationService.findAllReservations();
     }
+
+    @GetMapping("/report-status")
+    public StatusAmount getReservationStatus(){
+        return reservationServiceImpl.getStatusReport();
+    }
+ 
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getDatesReport(@PathVariable ("dateOne") String date1, @PathVariable("dateTwo") String date2){
+        return reservationServiceImpl.getReservationPeriod(date1, date2);
+    }
+
+    @GetMapping("/report-clients")
+    public List<CountClients> getCountClients(){
+        return reservationServiceImpl.getTopClientes();
+    }
+
+   
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/save")

@@ -57,7 +57,7 @@ public class Skates implements Serializable{
     @JsonIgnoreProperties(value={"skates"})
     private Category category;
         
-    @OneToMany( cascade = {CascadeType.PERSIST}, mappedBy = "skate")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "skate")
     @JsonIgnoreProperties(value={"client","skate"})
     private List<Message> messages; 
 
